@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Cards from "./components/MatchCard/Cards";
+import cards from "./cards.json";
+import Wrapper from "./components/Wrapper";
+import Title from "./components/Title";
+// import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = { cards, correctguesses: 0 };
+  render() {
+    return (
+      <Wrapper>
+        <Title>Match game</Title>
+        {this.state.cards.map(card => (
+          <Cards
+            id={card.id}
+            key={card.id}
+            image={card.image}
+            name={card.name}
+          />
+        ))}
+      </Wrapper>
+    );
+  }
 }
 
 export default App;
